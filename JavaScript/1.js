@@ -14,6 +14,7 @@ function main(){
 	} else {
 		console.log("Lo lograste!");
 	}
+	console.log("Supuestamente funciona! xd");
 }
 
 main()
