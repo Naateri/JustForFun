@@ -22,8 +22,8 @@ template <class LOL> void PythonList<LOL>::resize(int size){
 	for(int i = 0; i < end; i++){
 		newarr[i] = arrayXD[i];
 	}
+	delete [] arrayXD;
 	this->arrayXD = newarr;
-	delete [] newarr;
 }
 
 template <class LOL> PythonList<LOL>::PythonList(){
