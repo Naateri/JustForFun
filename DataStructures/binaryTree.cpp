@@ -17,10 +17,12 @@ private:
 	TreeNode* begin;
 public:
 	BinaryTree();
+	//~BinaryTree();
 	bool isEmpty();
 	void insert(long);
 	void findRoute(long);
 	void preorder(TreeNode*);
+	void inorder(TreeNode*);
 };
 
 BinaryTree::BinaryTree(){
@@ -90,6 +92,18 @@ void BinaryTree::preorder(TreeNode* lel = nullptr){
 		if (temp->right != nullptr){
 			preorder(temp->right);
 		}
+	}
+}
+
+void BinaryTree::inorder(TreeNode* lel = nullptr){
+	if (isEmpty()){
+		cout << "El arbol esta vacio\n";
+	} else {
+		TreeNode *temp;
+		if (lel == nullptr) lel = begin;
+		temp = lel;
+		cout << lel->val << endl;
+		
 	}
 }
 
