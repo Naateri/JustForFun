@@ -23,7 +23,9 @@ public:
 	void insert(string);
 	void erase(int);
 	void print();
-	string find(string);
+	Node* find(string);
+	void modify(string, string);
+	int get(string);
 };
 
 LinkedList::LinkedList(){
@@ -55,7 +57,6 @@ void LinkedList::erase(int pos){
 	Node *temp = head;
 	if (pos == 0){
 		head = head->next;
-		delete temp;
 	} else {
 		Node *prev;
 		prev = temp;
@@ -65,10 +66,9 @@ void LinkedList::erase(int pos){
 			prev = prev->next;
 			pos--;
 		}
-		//Node *toBeErased = temp;
 		prev->next = temp->next;
-		delete temp;
 	}
+	delete temp;
 }
 
 void LinkedList::print(){
@@ -79,13 +79,33 @@ void LinkedList::print(){
 	}
 }
 
-string LinkedList::find(string value){
-	Node* ptr = head;
+Node* LinkedList::find(string value){
+	Node* ptr = this->head;
 	while(ptr != nullptr){
-		if (value == ptr->val) return ptr->val;
+		if (value == ptr->val){ return ptr;}
 		ptr = ptr->next;
 	}
-	return "No se ha encontrado ese valor\n";
+	return nullptr;
+}
+
+void LinkedList::modify(string val2Modify, string newVal){
+	Node* ptr;
+	ptr = find(val2Modify);
+	if (ptr != nullptr){
+		ptr->val = newVal;
+	} else {
+		insert(newVal);
+	}
+}
+
+int LinkedList::get(string val){
+	Node* ptr = head;
+	int pos = -1;
+	while(ptr != nullptr){
+		pos++;
+		ptr = ptr->next;
+	}
+	return pos;
 }
 
 //modulo function from https://github.com/Naateri/Algebra-Abstracta/blob/master/maths.cpp#L15
@@ -108,13 +128,17 @@ public:
 	HashTable();
 	~HashTable();
 	void insert(string);
+	unsigned short getHash(string);
+	int find(string);
+	void modify(string, string);
+	void erase(string);
 };
 
 //hashtable.cpp
 
 unsigned short HashTable::hashFunction(string value){
 	unsigned short sum = 0;
-	for(int i = 0; i < value.size(); i++){
+	for(unsigned int i = 0; i < value.size(); i++){
 		sum += (int)(value[i]);
 	}
 	return modulo(sum, SIZE);
@@ -134,10 +158,59 @@ void HashTable::insert(string value){
 	hashi[res].insert(value);
 }
 
+unsigned short HashTable::getHash(string val){
+	//unsigned short res = hashFunction(val);
+	//cout << "Supuestamente guardado en la posicion: " << res << endl;
+	return hashFunction(val);
+}
+
+int HashTable::find(string val){
+	unsigned short res = getHash(val);
+	if (hashi[res].find(val) == nullptr){
+		return -1;
+	} else return res;
+}
+
+void HashTable::modify(string val2modify, string newval){
+	unsigned short res = hashFunction(val2modify);
+	Node* ptr;
+	//LinkedList hola;
+	//hola = hashi[res];
+	ptr = hashi[res].find(val2modify); //puntero al nodo que vamos a modificar
+	if (ptr != nullptr){
+		hashi[res].erase(hashi[res].get(val2modify)); //borra el valor anterior
+		this->insert(newval); //lo inserta en la tablita
+	} else cout << "No se encontro ese valor\n";
+}
+
+void HashTable::erase(string value){
+	unsigned short res = hashFunction(value);
+	Node* ptr;
+	ptr = hashi[res].find(value); //puntero al nodo que queremos borrar
+	if (ptr != nullptr){
+		hashi[res].erase(hashi[res].get(value));
+	} else cout << "El valor no existe\n";
+}
+
+
 
 int main(int argc, char *argv[]) {
 	HashTable Lel;
 	Lel.insert("xd");
+	Lel.insert("Hola");
+	Lel.insert("Lol");
+	Lel.insert("lel");
+	Lel.insert("yc");
+	cout << Lel.find("lel") << endl;
+	cout << Lel.find("xd") << endl;
+	cout << Lel.find("Lol") << endl;
+	cout << Lel.find("yc") << endl;
+	cout << Lel.find("lal") << endl;
+	Lel.modify("lel", "lal");
+	cout << Lel.find("lal") << endl;
+	//cout << Lel.find("lel") << endl; //-1
+	Lel.erase("lal");
+	cout << Lel.find("lal") << endl; //-1
 	return 0;
 }
 
