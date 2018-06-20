@@ -3,7 +3,6 @@
 #include <time.h>
 #include <stdlib.h>
 
-
 #define THREADS 8
 
 using namespace std;

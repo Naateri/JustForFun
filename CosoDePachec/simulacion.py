@@ -196,38 +196,38 @@ def fecha13(a, b, c, d, e, r3, puntos):
 		puntos[1][0] += 1;
 
 def fecha14(a, b, c, d, e, r3, puntos):
-	res1, res2 = simularNPartidosD(d, c);
-	if (res1 > res2):
-		puntos[3][0] += 3;
-	elif (res1 < res2):
-		puntos[2][0] += 3;
-	else:
-		puntos[3][0] += 1;
-		puntos[2][0] += 1;
-	res1, res2 = simularNPartidosD(c, d);
-	if (res1 > res2):
-		puntos[2][0] += 3;
-	elif (res1 < res2):
-		puntos[3][0] += 3;
-	else:
-		puntos[2][0] += 1;
-		puntos[3][0] += 1;
-	res1, res2 = simularNPartidosD(r3, a);
-	if (res1 > res2):
-		puntos[5][0] += 3;
-	elif (res1 < res2):
-		puntos[0][0] += 3;
-	else:
-		puntos[5][0] += 1;
-		puntos[0][0] += 1;
-	res1, res2 = simularNPartidosD(a, r3);
-	if (res1 > res2):
-		puntos[0][0] += 3;
-	elif (res1 < res2):
-		puntos[5][0] += 3;
-	else:
-		puntos[5][0] += 1;
-		puntos[0][0] += 1;
+	#res1, res2 = simularNPartidosD(d, c);
+	#if (res1 > res2):
+	#	puntos[3][0] += 3;
+	#elif (res1 < res2):
+	#	puntos[2][0] += 3;
+	#else:
+	#	puntos[3][0] += 1;
+	#	puntos[2][0] += 1;
+	#res1, res2 = simularNPartidosD(c, d);
+	#if (res1 > res2):
+	#	puntos[2][0] += 3;
+	#elif (res1 < res2):
+	#	puntos[3][0] += 3;
+	#else:
+	#	puntos[2][0] += 1;
+	#	puntos[3][0] += 1;
+	#res1, res2 = simularNPartidosD(r3, a);
+	#if (res1 > res2):
+	#	puntos[5][0] += 3;
+	#elif (res1 < res2):
+	#	puntos[0][0] += 3;
+	#else:
+	#	puntos[5][0] += 1;
+	#	puntos[0][0] += 1;
+	#res1, res2 = simularNPartidosD(a, r3);
+	#if (res1 > res2):
+	#	puntos[0][0] += 3;
+	#elif (res1 < res2):
+	#	puntos[5][0] += 3;
+	#else:
+	#	puntos[5][0] += 1;
+	#	puntos[0][0] += 1;
 	res1, res2 = simularNPartidosD(e, b);
 	if (res1 > res2):
 		puntos[4][0] += 3;
@@ -397,20 +397,22 @@ def fecha17(a, b, c, d, e, r3, puntos):
 
 
 def segundaFase():
-	r3 = repechajes();
+	#r3 = repechajes();
+	r3 = "Queso";
 	a = "Chichico";
 	b = "Diego";
 	c = "FAMO";
 	d = "Pachec";
 	e = "Chavez";
-	puntos = [[0, a], [0, b], [0, c], [0, d], [0, e], [0, r3]];
+	#puntos = [[0, a], [0, b], [0, c], [0, d], [0, e], [0, r3]];
+	puntos = [[9, a], [3, b], [9, c], [0, d], [3, e], [6, r3]];
 	#puntos[0][1] = a;
 	#puntos[1][1] = b;
 	#puntos[2][1] = c;
 	#puntos[3][1] = d;
 	#puntos[4][1] = e;
 	#puntos[5][1] = r3;
-	fecha13(a, b, c, d, e, r3, puntos);
+	#fecha13(a, b, c, d, e, r3, puntos);
 	fecha14(a, b, c, d, e, r3, puntos);
 	fecha15(a, b, c, d, e, r3, puntos);
 	fecha16(a, b, c, d, e, r3, puntos);
@@ -455,56 +457,61 @@ def octavoPuesto(n = loopies):
 	print "Cuajo: " + str(cuajo) + "%";
 
 def septimoPuesto(n = loopies):
-	barbachan = 0.0;
-	cuajo = 0.0;
+	#barbachan = 0.0;
+	#cuajo = 0.0;
 	queso = 0.0;
 	ganzo = 0.0;
 	for i in range(n):
-		repe1 = repechaje1()[0];
-		repe2 = repechaje2(repe1)[0];
+		#repe1 = repechaje1()[0];
+		#repe2 = repechaje2(repe1)[0];
+		repe2 = "Queso";
 		septimo = repechaje3(repe2)[1]
 		if (septimo == "Queso"):
 			queso += 1;
-		elif (septimo == "Ganzo"):
-			ganzo += 1;
-		elif (septimo == "Barbachan"):
-			barbachan += 1;
+		#elif (septimo == "Ganzo"):
+		#	ganzo += 1;
+		#elif (septimo == "Barbachan"):
+		#	barbachan += 1;
+		#else:
+		#	cuajo += 1;
 		else:
-			cuajo += 1;
+			ganzo += 1;
 	ganzo = float((ganzo * 100) / n);			
 	queso = float((queso * 100) / n);
-	barbachan = float((barbachan * 100) / n);	
-	cuajo = float((cuajo * 100) / n);
+	#barbachan = float((barbachan * 100) / n);	
+	#cuajo = float((cuajo * 100) / n);
 	print "Posibilidades de acabar septimo: ";
 	print "Ganzo: " + str(ganzo) + "%";
 	print "Queso: " + str(queso) + "%";
-	print "Barbachan: " + str(barbachan) + "%";
-	print "Cuajo: " + str(cuajo) + "%";
+	#print "Barbachan: " + str(barbachan) + "%";
+	#print "Cuajo: " + str(cuajo) + "%";
 			
 def pasaRepechaje(n = loopies):
-	barbachan = 0.0;
-	cuajo = 0.0;
+	#barbachan = 0.0;
+	#cuajo = 0.0;
 	queso = 0.0;
 	ganzo = 0.0;
 	for i in range(n):
-		pasa = repechajes();
+		#pasa = repechajes();
+		repe2 = "Queso";
+		pasa = repechaje3(repe2)[0]
 		if (pasa == "Ganzo"):
 			ganzo += 1;
 		elif (pasa == "Queso"):
 			queso += 1;
-		elif (pasa == "Barbachan"):
-			barbachan += 1;
-		else:
-			barbachan += 1;
+		#elif (pasa == "Barbachan"):
+		#	barbachan += 1;
+		#else:
+		#	barbachan += 1;
 	ganzo = float((ganzo * 100) / n);			
 	queso = float((queso * 100) / n);
-	barbachan = float((barbachan * 100) / n);	
-	cuajo = float((cuajo * 100) / n);
+	#barbachan = float((barbachan * 100) / n);	
+	#cuajo = float((cuajo * 100) / n);
 	print "Posibilidades de pasar el repechaje: ";
 	print "Ganzo: " + str(ganzo) + "%";
 	print "Queso: " + str(queso) + "%";
-	print "Barbachan: " + str(barbachan) + "%";
-	print "Cuajo: " + str(cuajo) + "%";
+	#print "Barbachan: " + str(barbachan) + "%";
+	#print "Cuajo: " + str(cuajo) + "%";
 
 def sextoPuesto(n = loopies):
 	lel = n;
@@ -530,34 +537,34 @@ def sextoPuesto(n = loopies):
 			sexto = o[1];
 		else:
 			sexto = ne[1];
-		if (sexto == "Ganzo"):
-			ganzo += 1;
-		elif (sexto == "Queso"):
+		#if (sexto == "Ganzo"):
+		#	ganzo += 1;
+		if (sexto == "Queso"):
 			queso += 1;
 		elif (sexto == "Pachec"):
 			pachec += 1;
 		elif (sexto == "Chavez"):
 			chavez += 1;
-		elif (sexto == "Barbachan"):
-			barbachan += 1;
+		#elif (sexto == "Barbachan"):
+		#	barbachan += 1;
 		elif (sexto == "FAMO"):
 			famo += 1;
 		elif (sexto == "Diego"):
 			diego += 1;
 		else:
 			chichico += 1; 
-	ganzo = float((ganzo * 100) / lel);			
+	#ganzo = float((ganzo * 100) / lel);			
 	queso = float((queso * 100) / lel);
-	barbachan = float((barbachan * 100) / lel);	
+	#barbachan = float((barbachan * 100) / lel);	
 	pachec = float((pachec * 100) / lel);
 	chavez = float((chavez * 100) / lel);
 	famo = float((famo * 100) / lel);
 	diego = float((diego * 100) / lel);
 	chichico = float((chichico * 100) / lel);
 	print "Posibilidades de acabar sexto: ";
-	print "Ganzo: " + str(ganzo) + "%";
+	#print "Ganzo: " + str(ganzo) + "%";
 	print "Queso: " + str(queso) + "%";
-	print "Barbachan: " + str(barbachan) + "%";
+	#print "Barbachan: " + str(barbachan) + "%";
 	print "Pachec: " + str(pachec) + "%";
 	print "Chavez: " + str(chavez) + "%";
 	print "FAMO: " + str(famo) + "%";
@@ -588,34 +595,34 @@ def quintoPuesto(n = loopies):
 			quinto = ne[1];
 		else:
 			quinto = o[1];
-		if (quinto == "Ganzo"):
-			ganzo += 1;
-		elif (quinto == "Queso"):
+		#if (quinto == "Ganzo"):
+		#	ganzo += 1;
+		if (quinto == "Queso"):
 			queso += 1;
 		elif (quinto == "Pachec"):
 			pachec += 1;
 		elif (quinto == "Chavez"):
 			chavez += 1;
-		elif (quinto == "Barbachan"):
-			barbachan += 1;
+		#elif (quinto == "Barbachan"):
+		#	barbachan += 1;
 		elif (quinto == "FAMO"):
 			famo += 1;
 		elif (quinto == "Diego"):
 			diego += 1;
 		else:
 			chichico += 1; 
-	ganzo = float((ganzo * 100) / lel);			
+	#ganzo = float((ganzo * 100) / lel);			
 	queso = float((queso * 100) / lel);
-	barbachan = float((barbachan * 100) / lel);	
+	#barbachan = float((barbachan * 100) / lel);	
 	pachec = float((pachec * 100) / lel);
 	chavez = float((chavez * 100) / lel);
 	famo = float((famo * 100) / lel);
 	diego = float((diego * 100) / lel);
 	chichico = float((chichico * 100) / lel);
 	print "Posibilidades de acabar quinto: ";
-	print "Ganzo: " + str(ganzo) + "%";
+	#print "Ganzo: " + str(ganzo) + "%";
 	print "Queso: " + str(queso) + "%";
-	print "Barbachan: " + str(barbachan) + "%";
+	#print "Barbachan: " + str(barbachan) + "%";
 	print "Pachec: " + str(pachec) + "%";
 	print "Chavez: " + str(chavez) + "%";
 	print "FAMO: " + str(famo) + "%";
@@ -649,34 +656,34 @@ def cuartoPuesto(n = loopies):
 			cuarto = m[1];
 		else:
 			cuarto = l[1];
-		if (cuarto == "Ganzo"):
-			ganzo += 1;
-		elif (cuarto == "Queso"):
+		#if (cuarto == "Ganzo"):
+		#	ganzo += 1;
+		if (cuarto == "Queso"):
 			queso += 1;
 		elif (cuarto == "Pachec"):
 			pachec += 1;
 		elif (cuarto == "Chavez"):
 			chavez += 1;
-		elif (cuarto == "Barbachan"):
-			barbachan += 1;
+		#elif (cuarto == "Barbachan"):
+		#	barbachan += 1;
 		elif (cuarto == "FAMO"):
 			famo += 1;
 		elif (cuarto == "Diego"):
 			diego += 1;
 		else:
 			chichico += 1; 
-	ganzo = float((ganzo * 100) / lel);			
+	#ganzo = float((ganzo * 100) / lel);			
 	queso = float((queso * 100) / lel);
-	barbachan = float((barbachan * 100) / lel);	
+	#barbachan = float((barbachan * 100) / lel);	
 	pachec = float((pachec * 100) / lel);
 	chavez = float((chavez * 100) / lel);
 	famo = float((famo * 100) / lel);
 	diego = float((diego * 100) / lel);
 	chichico = float((chichico * 100) / lel);
 	print "Posibilidades de acabar cuarto: ";
-	print "Ganzo: " + str(ganzo) + "%";
+	#print "Ganzo: " + str(ganzo) + "%";
 	print "Queso: " + str(queso) + "%";
-	print "Barbachan: " + str(barbachan) + "%";
+	#print "Barbachan: " + str(barbachan) + "%";
 	print "Pachec: " + str(pachec) + "%";
 	print "Chavez: " + str(chavez) + "%";
 	print "FAMO: " + str(famo) + "%";
@@ -710,34 +717,34 @@ def tercerPuesto(n = loopies):
 			tercero = l[1];
 		else:
 			tercero = m[1];
-		if (tercero == "Ganzo"):
-			ganzo += 1;
-		elif (tercero == "Queso"):
+		#if (tercero == "Ganzo"):
+		#	ganzo += 1;
+		if (tercero == "Queso"):
 			queso += 1;
 		elif (tercero == "Pachec"):
 			pachec += 1;
 		elif (tercero == "Chavez"):
 			chavez += 1;
-		elif (tercero == "Barbachan"):
-			barbachan += 1;
+		#elif (tercero == "Barbachan"):
+		#	barbachan += 1;
 		elif (tercero == "FAMO"):
 			famo += 1;
 		elif (tercero == "Diego"):
 			diego += 1;
 		else:
 			chichico += 1; 
-	ganzo = float((ganzo * 100) / lel);			
+	#ganzo = float((ganzo * 100) / lel);			
 	queso = float((queso * 100) / lel);
-	barbachan = float((barbachan * 100) / lel);	
+	#barbachan = float((barbachan * 100) / lel);	
 	pachec = float((pachec * 100) / lel);
 	chavez = float((chavez * 100) / lel);
 	famo = float((famo * 100) / lel);
 	diego = float((diego * 100) / lel);
 	chichico = float((chichico * 100) / lel);
 	print "Posibilidades de acabar tercero: ";
-	print "Ganzo: " + str(ganzo) + "%";
+	#print "Ganzo: " + str(ganzo) + "%";
 	print "Queso: " + str(queso) + "%";
-	print "Barbachan: " + str(barbachan) + "%";
+	#print "Barbachan: " + str(barbachan) + "%";
 	print "Pachec: " + str(pachec) + "%";
 	print "Chavez: " + str(chavez) + "%";
 	print "FAMO: " + str(famo) + "%";
@@ -768,34 +775,34 @@ def segundoPuesto(n = loopies):
 			segundo = k[1];
 		else:
 			segundo = j[1];
-		if (segundo == "Ganzo"):
-			ganzo += 1;
-		elif (segundo == "Queso"):
+		#if (segundo == "Ganzo"):
+		#	ganzo += 1;
+		if (segundo == "Queso"):
 			queso += 1;
 		elif (segundo == "Pachec"):
 			pachec += 1;
 		elif (segundo == "Chavez"):
 			chavez += 1;
-		elif (segundo == "Barbachan"):
-			barbachan += 1;
+		#elif (segundo == "Barbachan"):
+		#	barbachan += 1;
 		elif (segundo == "FAMO"):
 			famo += 1;
 		elif (segundo == "Diego"):
 			diego += 1;
 		else:
 			chichico += 1; 
-	ganzo = float((ganzo * 100) / lel);			
+	#ganzo = float((ganzo * 100) / lel);			
 	queso = float((queso * 100) / lel);
-	barbachan = float((barbachan * 100) / lel);	
+	#barbachan = float((barbachan * 100) / lel);	
 	pachec = float((pachec * 100) / lel);
 	chavez = float((chavez * 100) / lel);
 	famo = float((famo * 100) / lel);
 	diego = float((diego * 100) / lel);
 	chichico = float((chichico * 100) / lel);
 	print "Posibilidades de acabar como subcampeon: ";
-	print "Ganzo: " + str(ganzo) + "%";
+	#print "Ganzo: " + str(ganzo) + "%";
 	print "Queso: " + str(queso) + "%";
-	print "Barbachan: " + str(barbachan) + "%";
+	#print "Barbachan: " + str(barbachan) + "%";
 	print "Pachec: " + str(pachec) + "%";
 	print "Chavez: " + str(chavez) + "%";
 	print "FAMO: " + str(famo) + "%";
@@ -826,34 +833,34 @@ def campeon(n = loopies):
 			campeon = j[1];
 		else:
 			campeon = k[1];
-		if (campeon == "Ganzo"):
-			ganzo += 1;
-		elif (campeon == "Queso"):
+		#if (campeon == "Ganzo"):
+		#	ganzo += 1;
+		if (campeon == "Queso"):
 			queso += 1;
 		elif (campeon == "Pachec"):
 			pachec += 1;
 		elif (campeon == "Chavez"):
 			chavez += 1;
-		elif (campeon == "Barbachan"):
-			barbachan += 1;
+		#elif (campeon == "Barbachan"):
+		#	barbachan += 1;
 		elif (campeon == "FAMO"):
 			famo += 1;
 		elif (campeon == "Diego"):
 			diego += 1;
 		else:
 			chichico += 1; 
-	ganzo = float((ganzo * 100) / lel);			
+	#ganzo = float((ganzo * 100) / lel);			
 	queso = float((queso * 100) / lel);
-	barbachan = float((barbachan * 100) / lel);	
+	#barbachan = float((barbachan * 100) / lel);	
 	pachec = float((pachec * 100) / lel);
 	chavez = float((chavez * 100) / lel);
 	famo = float((famo * 100) / lel);
 	diego = float((diego * 100) / lel);
 	chichico = float((chichico * 100) / lel);
 	print "Posibilidades de acabar como campeon: ";
-	print "Ganzo: " + str(ganzo) + "%";
+	#print "Ganzo: " + str(ganzo) + "%";
 	print "Queso: " + str(queso) + "%";
-	print "Barbachan: " + str(barbachan) + "%";
+	#print "Barbachan: " + str(barbachan) + "%";
 	print "Pachec: " + str(pachec) + "%";
 	print "Chavez: " + str(chavez) + "%";
 	print "FAMO: " + str(famo) + "%";
@@ -863,10 +870,10 @@ def campeon(n = loopies):
 ##############MAIN#####################
 
 sacandoRating();
-novenoPuesto();
-octavoPuesto();
-septimoPuesto();
-pasaRepechaje();
+#novenoPuesto();
+#octavoPuesto();
+#septimoPuesto();
+#pasaRepechaje();
 sextoPuesto();
 quintoPuesto();
 cuartoPuesto();

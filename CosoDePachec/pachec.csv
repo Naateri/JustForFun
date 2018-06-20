@@ -37,3 +37,17 @@ Barbachan,0,Pachec,3
 FAMO,3,Diego,0
 Cuajo,0,Barbachan,3
 Barbachan,3,Cuajo,0
+Barbachan,0,Queso,1
+Queso,3,Barbachan,0
+Queso,3,Ganzo,1
+Ganzo,0,Queso,2
+Chichico,3,Pachec,1
+Pachec,2,Chichico,3
+Chavez,2,FAMO,3
+FAMO,0,Chavez,3
+Queso,2,Diego,1
+Diego,1,Queso,0
+Pachec,0,FAMO,3
+FAMO,2,Pachec,1
+Queso,3,Chichico,0
+Chichico,3,Queso,2
