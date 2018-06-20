@@ -206,13 +206,19 @@ void RedBlack<T,C>::recolor(CNode<T>* v){
 	}
 	CNode<T>* p, *g_parent, *uncle;
 	typename CNode<T>::node_list it = path.end(); //Holy $#!t it works
+	bool gparent_son; //if 0: uncle is the left son, if 1: uncle is the right son (from grandparent)
 	--it; --it;
 	p = *(it--);
 	if (p->colour) return;
 	g_parent = *(it);
 	//if (!g_parent->m_nodes[1]) uncle = g_parent->m_nodes[1];
-	if (g_parent->m_nodes[1]->m_x != p->m_x) uncle = g_parent->m_nodes[1];
-	else uncle = g_parent->m_nodes[0];
+	if (!g_parent->m_nodes[1] || g_parent->m_nodes[1]->m_x != p->m_x){
+		uncle = g_parent->m_nodes[1];
+		gparent_son = 1;
+	} else {
+		uncle = g_parent->m_nodes[0];
+		gparent_son = 0;
+	}
 	if (uncle && !uncle->colour){ //red = 0, black = 1
 		p->colour = 1;
 		uncle->colour = 1;
@@ -222,7 +228,9 @@ void RedBlack<T,C>::recolor(CNode<T>* v){
 		std::cout << "Rotation\n";
 		p->colour = 1;
 		g_parent->colour = 0;
-		right_rotate(&g_parent);
+		if (!gparent_son) right_rotate(&g_parent);
+		else left_rotate(&g_parent);
+		//right_rotate(&g_parent);
 		//left_rotate(&g_parent);
 	}
 }
@@ -295,16 +303,18 @@ void RedBlack<T,C>::printTree(CNode<T>* p){
 
 int main(int argc, char *argv[]) {
 	RedBlack<int, Menor<int> > RB;
-	RB.insert(15); //RR test + RU
+	/*RB.insert(15); //RR test + RU
 	RB.insert(18);
 	RB.insert(21);
 	RB.printTree(RB.m_root);
 	std::cout << std::endl;
-	RB.insert(14);
-	/*RB.insert(5); //LL test + RU
+	RB.insert(14);*/
+	RB.insert(5); //LL test + RU
 	RB.insert(4);
 	RB.insert(3);
-	RB.insert(6);*/
+	RB.printTree(RB.m_root);
+	std::cout << std::endl;
+	RB.insert(6);
 	/*RB.insert(10); //LR test
 	RB.insert(15);
 	RB.insert(12);*/
