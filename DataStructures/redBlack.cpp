@@ -309,12 +309,12 @@ int main(int argc, char *argv[]) {
 	RB.printTree(RB.m_root);
 	std::cout << std::endl;
 	RB.insert(14);*/
-	RB.insert(5); //LL test + RU
+	/*RB.insert(5); //LL test + RU
 	RB.insert(4);
 	RB.insert(3);
 	RB.printTree(RB.m_root);
 	std::cout << std::endl;
-	RB.insert(6);
+	RB.insert(6);*/
 	/*RB.insert(10); //LR test
 	RB.insert(15);
 	RB.insert(12);*/
