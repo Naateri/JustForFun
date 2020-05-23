@@ -306,18 +306,18 @@ int main(int argc, char *argv[]) {
 	/*RB.insert(15); //RR test + RU
 	RB.insert(18);
 	RB.insert(21);
+	RB.insert(14);
 	RB.printTree(RB.m_root);
-	std::cout << std::endl;
-	RB.insert(14);*/
+	std::cout << std::endl;*/
 	/*RB.insert(5); //LL test + RU
 	RB.insert(4);
 	RB.insert(3);
 	RB.printTree(RB.m_root);
 	std::cout << std::endl;
 	RB.insert(6);*/
-	/*RB.insert(10); //LR test
+	RB.insert(10); //LR test
 	RB.insert(15);
-	RB.insert(12);*/
+	RB.insert(12);
 	/*RB.insert(15); //RL test
 	RB.insert(10);
 	RB.insert(12);*/
